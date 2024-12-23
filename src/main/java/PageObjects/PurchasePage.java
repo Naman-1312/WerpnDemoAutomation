@@ -269,7 +269,14 @@ elementToBeClickable(By.xpath("//*[text()=\"NO, I do not agree to receive email 
 		pcdBtn.click();
     }
     
+    private WebElement paymentSuccessMsg() {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("paymentSuccess")));
+    }
     
+    public void paymentSuccessMessage() {
+    	WebElement pcdBtn = get.successmessage();
+		pcdBtn.click();
+    }
 	
 	
 	

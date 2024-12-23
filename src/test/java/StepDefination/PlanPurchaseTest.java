@@ -3,7 +3,6 @@ package StepDefination;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
-import Messages.LoginPageMessages;
 import PageObjects.BaseClass;
 import PageObjects.PurchasePage;
 //import PageObjects.RegistrationPage;
@@ -15,8 +14,7 @@ public class PlanPurchaseTest {
 
 	private BaseClass baseClass;
 	private PurchasePage pp;
-	private LoginPageMessages lpg;
-//	private RegistrationPage rpg;
+	
 	
 	@Given("User is on Membership Plan Page")
 	public void user_is_on_membership_plan_page() {
@@ -82,14 +80,23 @@ public class PlanPurchaseTest {
 	   pp.clickPlaceOrderBtn();
 	}
 
+	@When("I fill all the Payment details")
+	public void i_fill_all_the_payment_details() {
+	    pp.enterFirstName(firstName);
+	    pp.enterLastName(lastName);
+	    pp.enterEmailId(personalEmail);
+	    pp.enterHomePhoneNumber(homePhone);
+	    pp.enterMobilePhoneNumber(mobilePhone);
+	    pp.enterDOB(DOB);
+	}
 
-	/*@Then("I verify the alert message for the invalid credentials")
-	public void i_verify_the_alert_message_for_the_invalid_credentials() {
-		String actualMessage = login.checkInvalidUserNameErrorMsg();
-	    String expectedMessage = lpg.blankPasswordErrorMessage();
+	@Then("I validate the payment success message")
+	public void i_validate_the_payment_success_message() {
+		String actualMessage = pp.paymentSuccessMessage();
+	    String expectedMessage = "Plan Purchased Successfully";
 	    assertEquals(expectedMessage , actualMessage);
 	    baseClass.tearDown();
 	}
-	*/
+	
 	
 }
